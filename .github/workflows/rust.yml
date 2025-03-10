@@ -1,0 +1,66 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build
+      run: cargo build --verbose
+    - name: Run tests
+      run: cargo test --verbose
+            - name: cargo-assist
+  # You may pin to the exact commit or the version.
+  # uses: marcoieni/cargo-assist@dcc6e09df20675c6351c5b34f94dac66ae29a9ea
+  uses: marcoieni/cargo-assist@v0.1.1
+  with:
+    # Whether to run `cargo clippy --fix` or not. Useful if you want to run only `cargo fmt`. Possible values: `true`, `false`. Default: `true`.
+
+    clippy: # optional, default is true
+    # Whether to add `--allow-dirty` to clippy or not. Useful if you want to run `cargo clippy --fix` on a dirty repository. If you run commands before cargo-assist, the repository might be dirty. Possible values: `true`, `false`. Default: `false`.
+
+    clippy_allow_dirty: # optional
+    # Flags to pass to `cargo clippy --fix`. Default: `--all-targets --all-features --workspace`.
+
+    clippy_flags: # optional, default is --all-targets --all-features --workspace
+    # Commit message to use when committing the changes. Default: `chore: format, fix lints`.
+
+    commit_message: # optional, default is chore: format, fix lints
+    # Whether to run `cargo fmt` or not. Useful if you want to run only `cargo clippy --fix`. Possible values: `true`, `false`. Default: `true`.
+
+    fmt: # optional, default is true
+    # GitHub token of the author of the commit. If you provide `secrets.GITHUB_TOKEN`, the author of the commit is the github-actions bot.
+
+    github_token: 
+    # Directory where to run the commands. Defaults to repository's root. Useful if your rust project is in a subdirectory.
+
+                - name: Workflow Dispatch
+  # You may pin to the exact commit or the version.
+  # uses: benc-uk/workflow-dispatch@25b02cc069be46d637e8fe2f1e8484008e9e9609
+  uses: benc-uk/workflow-dispatch@v1.2.3
+  with:
+    # Name, filename or ID of workflow to run
+    workflow: 
+    # GitHub token with repo write access, only required if the workflow is in a different repository
+    token: # optional, default is ${{ github.token }}
+    # Inputs to pass to the workflow, must be a JSON string
+    inputs: # optional
+    # The reference can be a branch, tag, or a commit SHA
+    ref: # optional
+    # Repo owner & name, slash separated, only set if invoking a workflow in a different repo
+    repo: # optional
+          
+
+    working_directory: # optional
+          
